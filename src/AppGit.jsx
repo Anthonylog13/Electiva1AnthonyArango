@@ -4,16 +4,13 @@ import { Form } from "./components/Form"
 import { useState } from "react"
 import { SeeGifss } from "./components/SeeGifss";
 
-function AppGit(){
-  const [category, setCategory]= useState(0);
+function AppGit(){ //aquí llamamos a cada componente
+  const [category, setCategory]= useState(null);
   return(
-    <div className="App">
+    <div > 
       <HHeader/>
       <Form setCategory={setCategory}/>
       <SeeGifss category={category}/>
-      
-      <h2>main</h2>
-      
       <Footer/>
     </div>
   )
