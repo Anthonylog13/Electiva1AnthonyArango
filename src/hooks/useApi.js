@@ -1,25 +1,27 @@
-import { useEffect, useState } from "react"
+import { useState } from "react";
+import { useEffect } from "react";
 
-
-export const Api = (url) => {
- 
+export const useApi = (url) => {
     const [data, setData] = useState(null);
     const [loading, setLoading] = useState(false);
-    const fetchA = ()=>{
+    
+    const fetchApi = ()=>{
+
         fetch(url) // esto devuelve una promesa
         .then(respuesta => respuesta.json()) // la respuesta a la profesa la vamos a devolver parceada
         .then(respuestaJson =>{
             setLoading(true);
             setData(respuestaJson.data)
+            console.log(respuestaJson);
             
         })
         .catch(error => console.log(error))
 
     }
+    
     useEffect(() =>{
-        fetchA();
-    })
+        fetchApi();
+    },[url])
 
-    return{loading, data}
-  
+    return { loading, data}
 }
